@@ -1,0 +1,41 @@
+<script defer src="/js/application.js"></script>
+<script defer src="/js/likes.js"></script>
+<h1>Posts</h1>
+{{#if username}}
+<form action="/post/new" method="post">
+  <p><b>Новый щебет</b></p>
+  <p><textarea rows="2" cols="45" name="title" placeholder="введите текст"></textarea></p>
+  <button type="submit">Прощебетать</button>
+</form>
+{{/if}}
+
+<div class="products">
+  {{#each post}}
+  <div class="card" data-id="{{this.id}}">
+    <img width="150px" height="150px"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYcLJwp42Pg3yomcLPLJ3fKO5sO0wueEJKig&usqp=CAU" alt="">
+    <div class="productInfo">
+      <div class="owner">
+        <p><span> {{this.[User.name]}}</span> щебещет</p>
+        <div class="like">
+          <p id="amount">{{this.likes}}</p>
+          {{#if ../username}}
+          <a href="" id="like">❤</a>
+          {{else}}
+          <a href="">❤</a>
+          {{/if}}
+        </div>
+
+      </div>
+      <div class="title">
+        <span> {{this.title}}</span>
+      </div>
+      {{#if ../username}}
+      <button id="editPost" data-id="{{this.id}}">Edit</button>
+      <button id="deletePost">Delete</button>
+      {{/if}}
+    </div>
+
+  </div>
+  {{/each}}
+</div>

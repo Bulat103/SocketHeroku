@@ -1,0 +1,52 @@
+header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+header ul{
+  margin-right: 20px;
+  display: flex;
+  list-style-type:none;
+}
+header li{
+  margin: 10px;
+}
+.profile{
+  display: flex;
+  width: 100%;
+  background: rgb(243, 228, 180);
+}
+.card{
+  display: flex;
+  background-color: antiquewhite;
+  flex-direction: row;
+  width: 70vw;
+  margin: 10px;
+  padding: 10px;
+}
+.card img{
+  margin-right: 20px;
+}
+span{
+  margin-left: 20px;
+}
+.owner{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+.title{
+  width: 300px;
+}
+#like{
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background: rgb(241, 220, 126);
+}
+.like p{
+  margin-right: 10px;
+}
+button{
+  height: 35px;
+}

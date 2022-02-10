@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 bg-white">
+    <div>Щебетатель</div>
+    {{#if username}}
+    <div>Hi!</div>
+    <div class="userName">{{username}}</div>
+    {{/if}}
+    <nav class="clearfix mar-b-1">
+      <ul class="no-bullets">
+        <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+        {{#if username}}
+        <li class="pipe-separate t-light-green left"><a href="/user/profile">profile</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/user/logout/">logout</a></li>
+        {{else}}
+        <li class="pipe-separate t-light-green left"><a href="/user/login/">login</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/user/registration/">registration</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+    </div>
+  </header>
+
+  {{{body}}}
+
+
+</body>
+
+</html>

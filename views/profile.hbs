@@ -1,0 +1,34 @@
+<h1>User profile in freedg</h1>
+
+<form method="POST" action="/product">
+  <div class="mb-3">
+    <label for="newProduct" class="form-label">title</label>
+    <input type="text" class="form-control" id="newProduct" aria-describedby="emailHelp" name="title">
+  </div>
+  <div class="mb-3">
+    <label for="productCategory" class="form-label">Категория</label>
+    <select id="productCategory" class="form-select" name="category">
+      <option disabled>Выбери категорию</option>
+      <option value="1" selected>Молочные</option>
+      <option value="2">Мясные</option>
+      <option value="3">Фрукты и овощи</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Add to fridge</button>
+</form>
+<div class="card" data-id="{{r.id}}">
+  <img width="150px" height="150px"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYcLJwp42Pg3yomcLPLJ3fKO5sO0wueEJKig&usqp=CAU" alt="">
+  <div class="productInfo">
+    <div class="title">
+      title: <span> {{r.[Products.title]}}</span>
+    </div>
+    <div class="category">
+      category: <span> </span>
+    </div>
+    <div class="owner">
+      owner: <span> {{r.name}}</span>
+    </div>
+  </div>
+  <button id="eat">Мама я поел</button>
+</div>
