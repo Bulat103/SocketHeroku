@@ -1,5 +1,5 @@
 
-let socket = new WebSocket(`ws://bulatsfirstapp.herokuapp.com:8000`); //Fix: use window.location for adress
+let socket = new WebSocket(`wss://bulatsfirstapp.herokuapp.com:8000`); //Fix: use window.location for adress
 
 
 socket.onopen = () => {
