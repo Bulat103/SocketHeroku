@@ -14,6 +14,7 @@ const { Message } = require('./db/models')
 
 const app = express();
 const PORT = 3000;
+const PORTWS = 9077
 
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-const wss = new WebSocket.Server({ port: 9077 });
+const wss = new WebSocket.Server({ port: PORTWS });
 
 wss.on('connection', (client) => {
   client.on('message', async (data) => {
@@ -59,4 +60,6 @@ app.use('/chat', chatRouter);
 // app.use('/user', userRouter);
 // app.use('/post', postRouter);
 
-app.listen(process.env.PORT ?? 3000);
+app.listen(process.env.PORT, () => {
+  console.log("server has been started on ------------", PORT);
+});
