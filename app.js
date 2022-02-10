@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+require('dotenv').config()
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -37,7 +38,7 @@ wss.on('connection', (client) => {
 
 app.use(session({
   store: new FileStore(),
-  secret: 'tweet',
+  secret: process.env.SESSION_SECRET ?? 'qwerty',
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false },
@@ -58,4 +59,4 @@ app.use('/chat', chatRouter);
 // app.use('/user', userRouter);
 // app.use('/post', postRouter);
 
-app.listen(PORT);
+app.listen(process.env.PORT ?? 3000);
