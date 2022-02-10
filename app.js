@@ -14,7 +14,7 @@ const { Message } = require('./db/models')
 
 const app = express();
 const PORT = 3000;
-const PORTWS = 9077
+const PORTWS = 8000
 
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
