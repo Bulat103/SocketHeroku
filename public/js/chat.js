@@ -6,3 +6,4 @@ ws.onmessage = function (event) {
   el = document.getElementById('server-time');
   el.innerHTML = 'Server time: ' + event.data;
 };
+
