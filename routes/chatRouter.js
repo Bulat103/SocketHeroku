@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { Message } = require('../db/models')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   console.log("router work on /");
   res.redirect('/chat')
 })
