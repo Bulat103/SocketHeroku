@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.25.0",
+    "bufferutil": "^4.0.6",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
@@ -26,6 +27,7 @@
     "sequelize-cli": "^6.4.1",
     "session-file-store": "^1.5.0",
     "sha256": "^0.2.0",
+    "utf-8-validate": "^5.0.8",
     "ws": "^8.5.0"
   },
   "devDependencies": {

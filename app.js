@@ -1,62 +1,24 @@
-/* eslint-disable camelcase */
 require('dotenv').config()
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
-const WebSocket = require('ws');
-// const postRouter = require('./routes/postRouter');
-// const userRouter = require('./routes/userRouter');
-const chatRouter = require('./routes/chatRouter')
-// const { Post, User } = require('./db/models');
-const { Message } = require('./db/models')
+const { Server } = require('ws');
 
 
-const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
 
-app.set('view engine', 'hbs');
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-const wss = new WebSocket.Server({ port: 9077 });
+const wss = new Server({ server });
 
-wss.on('connection', (client) => {
-  client.on('message', async (data) => {
-    let message = JSON.parse(data);
-    await Message.create({ body: message.text })
-    wss.clients.forEach((client) => {
-      client.send(JSON.stringify(message));
-    })
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
+});
+
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
   });
-
-  // client.send('something');
-});
-
-
-app.use(session({
-  store: new FileStore(),
-  secret: process.env.SESSION_SECRET ?? 'qwerty',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false },
-  name: 'authorisation',
-}));
-
-app.use((req, res, next) => {
-  res.locals.username = req.session?.user;
-  res.locals.userid = req.session?.userid;
-  next();
-});
-
-app.get('/', async (req, res) => {
-  res.redirect('/chat');
-});
-
-app.use('/chat', chatRouter);
-// app.use('/user', userRouter);
-// app.use('/post', postRouter);
-
-app.listen(process.env.PORT ?? 3000);
+}, 1000);
