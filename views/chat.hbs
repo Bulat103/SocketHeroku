@@ -1,11 +1,6 @@
-<div>{{title}}</div>
 <script defer src="/js/chat.js"></script>
-<input type="text" class="messages">
-<button id="btn">Push</button>
-<div class="list">
-  {{#each message}}
-  <div>
-    {{this.body}}
-  </div>
-  {{/each}}
-</div>
+<input type="text" id="message">
+<button id="sendMessage">Send</button>
+{{#each message}}
+<div class="list">{{this.body}}</div>
+{{/each }}
